@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"baseUrl": "./src",
+		"jsx": "react",
+		"module": "commonjs",
+		"noImplicitAny": false,
+		"target": "es6",
+		"paths": {
+			"components/*": ["components/*"],
+			"locales/*": ["locales/*"],
+			"pages/*": ["pages/*"],
+			"redux/*": ["redux/*"],
+			"services/*": ["services/*"]
+		}
+	},
+	"exclude": ["node_modules", "build", ".vscode", ".idea"],
+	"include": ["src/**/*", "jsconfig.json"]
+}
