@@ -8,24 +8,21 @@ import Uzbek from "locales/uz/translation.json";
 import { initReactI18next } from "react-i18next";
 const fallbackLng = localStorage.getItem("i18nextLng") || "uz";
 const debug = process.env.NODE_ENV === "development";
-i18n
-	.use(Backend)
-	.use(LanguageDetector)
-	.use(initReactI18next)
-	.init({
-		resources: {
-			uz: {
-				translation: Uzbek,
-			},
-			ru: {
-				translation: Russian,
-			},
+const options = {
+	debug,
+	detection: {
+		cache: ["cookie"],
+		order: ["queryString", "cookie"],
+	},
+	fallbackLng,
+	resources: {
+		uz: {
+			translation: Uzbek,
 		},
-		fallbackLng,
-		debug,
-		detection: {
-			order: ["queryString", "cookie"],
-			cache: ["cookie"],
+		ru: {
+			translation: Russian,
 		},
-	});
+	},
+};
+i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init(options);
 export default i18n;

@@ -44,7 +44,7 @@ const Styles = createGlobalStyle`
 		--toastify-icon-color-warning: #ffff00;
 	}
 `;
-const StyledElement = styled.section`
+const StyledElement = styled.div`
 	& .Toastify__toast-container {
 		padding: 0;
 		right: 18px;
@@ -116,7 +116,7 @@ const StyledElement = styled.section`
 	}
 `;
 const Notifications = () => (
-	<StyledElement>
+	<StyledElement className="notifications">
 		<ToastContainer {...defaultOptions} />
 		<Styles />
 	</StyledElement>
