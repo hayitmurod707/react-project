@@ -1,9 +1,7 @@
 import i18n from "i18next";
 import Layout from "layout";
-import Notifications from "plugins/notifications";
 import { dark, light } from "plugins/styled-components";
 import { element } from "prop-types";
-import { Fragment } from "react";
 import { I18nextProvider } from "react-i18next";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -11,6 +9,7 @@ import { ThemeProvider } from "styled-components";
 import "./plugins/i18n";
 import "./plugins/jquery";
 import "./plugins/plyr";
+import './plugins/react-toastify';
 import "./plugins/rodal";
 import "./plugins/swiper";
 import "./plugins/tinymce";
@@ -23,10 +22,7 @@ const AppWrapper = ({ children }) => {
 				<BrowserRouter>
 					<ThemeProvider theme={mode === "light" ? light : dark}>
 						<Layout>
-							<Fragment>
-								<div>{children}</div>
-								<Notifications />
-							</Fragment>
+							{children}
 						</Layout>
 					</ThemeProvider>
 				</BrowserRouter>

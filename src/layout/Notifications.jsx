@@ -1,5 +1,4 @@
 import { Bounce, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import styled, { createGlobalStyle } from "styled-components";
 // danger color #ff0000
 // info color #0000ff
@@ -116,7 +115,7 @@ const StyledElement = styled.div`
 	}
 `;
 const Notifications = () => (
-	<StyledElement className="notifications">
+	<StyledElement>
 		<ToastContainer {...defaultOptions} />
 		<Styles />
 	</StyledElement>
