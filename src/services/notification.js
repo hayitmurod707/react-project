@@ -11,14 +11,23 @@ const CloseButton = ({ type }) => (
 );
 const notification = (
 	message = "Not entered message",
-	options = { autoClose: false, type: "info" }
+	{ autoClose = false, type = "info", onClose, onOpen, onClick }
 ) => {
-	const { autoClose, type } = options;
 	const option = autoClose
-		? { autoClose: 5000, closeButton: false, style: { overflow: "hidden" } }
+		? {
+				autoClose: 5000,
+				closeButton: false,
+				onClick,
+				onClose,
+				onOpen,
+				style: { overflow: "hidden" },
+		  }
 		: {
 				autoClose: false,
 				closeButton: <CloseButton type={type} />,
+				onClick,
+				onClose,
+				onOpen,
 				style: { overflow: "initial" },
 		  };
 	const hasType = ["error", "info", "success", "warning"].includes(type);

@@ -9,7 +9,8 @@ import { ThemeProvider } from "styled-components";
 import "./plugins/i18n";
 import "./plugins/jquery";
 import "./plugins/plyr";
-import './plugins/react-toastify';
+import "./plugins/react-contexify";
+import "./plugins/react-toastify";
 import "./plugins/rodal";
 import "./plugins/swiper";
 import "./plugins/tinymce";
@@ -21,9 +22,7 @@ const AppWrapper = ({ children }) => {
 			<I18nextProvider i18n={i18n}>
 				<BrowserRouter>
 					<ThemeProvider theme={mode === "light" ? light : dark}>
-						<Layout>
-							{children}
-						</Layout>
+						<Layout>{children}</Layout>
 					</ThemeProvider>
 				</BrowserRouter>
 			</I18nextProvider>
