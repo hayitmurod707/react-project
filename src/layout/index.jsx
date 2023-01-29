@@ -1,61 +1,29 @@
+import themes from "configurations/themes";
 import { element } from "prop-types";
-import { VscAccount, VscSettingsGear } from "react-icons/vsc";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import notification from "services/notification";
-import styled from "styled-components";
+import { ThemeProvider } from "styled-components";
+import Header from "./Header";
 import Notifications from "./Notifications";
-const StyledIcon = styled.div`
-	color: red;
-	&:hover {
-		color: blue;
-	}
-`;
+import Sidebar from "./Sidebar";
 const Layout = ({ children }) => {
+	const userTheme = useSelector(state => state?.settings?.theme);
+	const findTheme = themes.find(({ theme }) => theme === userTheme);
+	const theme = findTheme === undefined ? "" : findTheme;
 	return (
-		<div>
-			<div style={{ display: "flex", justifyContent: "space-between" }}>
-				<StyledIcon>
-					<VscAccount />
-					<VscSettingsGear />
-				</StyledIcon>
-				<div>
-					<Link to="/">Home</Link>
-				</div>
-				<div>
-					<Link to="/about">About</Link>
-				</div>
-				<div>
-					<Link to="/login">Login</Link>
-				</div>
-				<div>
-					<Link to="/register">Register</Link>
-				</div>
-				<div>
-					<Link to="/reset-password">Reset Password</Link>
-				</div>
-				<div>
-					<Link to="/profile">Profile</Link>
-				</div>
-				<div>
-					<Link to="/profile/settings">Settings</Link>
-				</div>
-			</div>
+		<ThemeProvider theme={theme}>
 			<div>
-				<button
-					onClick={() =>
-						notification("Hello", {
-							type: "success",
-							autoClose: false,
-							onClick: () => console.log("Hello"),
-						})
-					}
-				>
-					Show
-				</button>
+				<button onClick={() => notification("Hello")}>Notify</button>
+				<Header />
+				<div>
+					<div>
+						<Sidebar />
+					</div>
+					<div>{children}</div>
+				</div>
 			</div>
-			<div>{children}</div>
 			<Notifications />
-		</div>
+		</ThemeProvider>
 	);
 };
 Layout.defaultProps = {

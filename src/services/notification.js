@@ -9,17 +9,29 @@ const CloseButton = ({ type }) => (
 		</svg>
 	</button>
 );
-const notification = (
-	message = "Not entered message",
-	{ autoClose = false, type = "info", onClose, onOpen, onClick }
-) => {
+const notification = (message = "Not entered message", options = {}) => {
+	const {
+		autoClose = false,
+		type = "info",
+		onClose,
+		onOpen,
+		onClick,
+	} = options;
+	const openNotification = () => {
+		if (typeof onOpen === "function") {
+			onOpen();
+		}
+		const audio = document.getElementById("react-toastify-sound");
+		audio.currentTime = 0;
+		audio.play();
+	};
 	const option = autoClose
 		? {
 				autoClose: 5000,
 				closeButton: false,
 				onClick,
 				onClose,
-				onOpen,
+				onOpen: openNotification,
 				style: { overflow: "hidden" },
 		  }
 		: {
@@ -27,7 +39,7 @@ const notification = (
 				closeButton: <CloseButton type={type} />,
 				onClick,
 				onClose,
-				onOpen,
+				onOpen: openNotification,
 				style: { overflow: "initial" },
 		  };
 	const hasType = ["error", "info", "success", "warning"].includes(type);

@@ -9,7 +9,7 @@ axios.interceptors.response.use(
 	response => response,
 	error => middleware(error)
 );
-const getData = async ({ url, options, auth }) => {
+const getData = async (url, options, auth) => {
 	try {
 		const data = await axios.get(url, { ...getOptions(auth), ...options });
 		return { data, error: {}, status: "SUCCESS" };

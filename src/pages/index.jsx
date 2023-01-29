@@ -6,11 +6,11 @@ import NotFound from "./NotFound";
 import Public from "./Public";
 const Pages = () => {
 	const routes = useRoutes([
-		...Home,
-		...Auth,
 		...Account,
-		...Public,
+		...Auth,
+		...Home,
 		...NotFound,
+		...Public,
 	]);
 	return routes;
 };

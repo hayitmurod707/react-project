@@ -9,7 +9,7 @@ axios.interceptors.response.use(
 	response => response,
 	error => middleware(error)
 );
-const postData = async ({ url, data, options, auth }) => {
+const postData = async (url, data, options, auth) => {
 	try {
 		const fetchData = await axios.post(url, data, {
 			...getOptions(auth),

@@ -1,5 +1,6 @@
 import { Bounce, ToastContainer } from "react-toastify";
 import styled, { createGlobalStyle } from "styled-components";
+import Sound from "./notification.mp3";
 // danger color #ff0000
 // info color #0000ff
 // light color #ffffff
@@ -44,6 +45,9 @@ const Styles = createGlobalStyle`
 	}
 `;
 const StyledElement = styled.div`
+	& audio {
+		display: none;
+	}
 	& .Toastify__toast-container {
 		padding: 0;
 		right: 18px;
@@ -118,6 +122,7 @@ const Notifications = () => (
 	<StyledElement>
 		<ToastContainer {...defaultOptions} />
 		<Styles />
+		<audio src={Sound} id="react-toastify-sound" />
 	</StyledElement>
 );
 export default Notifications;
